@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8lK-5d-gVo">
+                                <rect key="frame" x="4" y="4" width="405" height="800"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8lK-5d-gVo" secondAttribute="trailing" constant="5" id="cCT-Ap-cH9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8lK-5d-gVo" secondAttribute="bottom" constant="4" id="elF-Ls-nZe"/>
+                            <constraint firstItem="8lK-5d-gVo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="gcx-AX-AjW"/>
+                            <constraint firstItem="8lK-5d-gVo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="kbz-ki-1mY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="8lK-5d-gVo" id="ImZ-Zd-k5G"/>
+                        <segue destination="dMx-bK-IDV" kind="modal" identifier="city" id="Qnj-75-t9h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="57" y="67"/>
+        </scene>
+        <!--City View Controller-->
+        <scene sceneID="J71-EQ-x37">
+            <objects>
+                <viewController id="noO-Jp-iIS" customClass="CityViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WFk-CL-Hit">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oYN-8N-ubY">
+                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4c8-hy-RYe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oYN-8N-ubY" firstAttribute="top" secondItem="4c8-hy-RYe" secondAttribute="top" id="Cx2-8E-ah0"/>
+                            <constraint firstItem="4c8-hy-RYe" firstAttribute="trailing" secondItem="oYN-8N-ubY" secondAttribute="trailing" id="Ksb-nw-8b6"/>
+                            <constraint firstItem="4c8-hy-RYe" firstAttribute="bottom" secondItem="oYN-8N-ubY" secondAttribute="bottom" id="VJy-7F-VSU"/>
+                            <constraint firstItem="oYN-8N-ubY" firstAttribute="leading" secondItem="4c8-hy-RYe" secondAttribute="leading" id="Y4n-qE-0Jo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ufj-t6-4Up"/>
+                    <connections>
+                        <outlet property="citytable" destination="oYN-8N-ubY" id="8IJ-Fe-hik"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="reloadcitydata" id="LLc-h1-fNd"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="citylocation" id="poM-q4-cGI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hif-WL-9qS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759" y="67"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EKE-to-Nak">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dMx-bK-IDV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mz6-QW-kJp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="noO-Jp-iIS" kind="relationship" relationship="rootViewController" id="4d0-gf-11i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAx-CB-yct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="67"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="poM-q4-cGI"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
