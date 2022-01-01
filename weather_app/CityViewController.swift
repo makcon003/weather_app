@@ -17,6 +17,8 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     var name = ""
     var loclon = 0.0
     var loclat = 0.0
+    var lon = ""
+    var lat = ""
     private var filteredcities = [Cities]()
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
@@ -50,7 +52,8 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         name = cities[indexPath.row].city
         vc.name = name
-        performSegue(withIdentifier: "reloadcitydata", sender: name)
+        performSegue(withIdentifier: "reload", sender: self)
+        
     }
     
     func localjson() {
@@ -70,17 +73,18 @@ class CityViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "reloadcitydata" {
+        if segue.identifier == "reload" {
             if let indexPath = self.citytable.indexPathForSelectedRow {
                 let controller = segue.destination as! ViewController
                 controller.llat = cities[indexPath.row].lat
                 controller.llon = cities[indexPath.row].lng
                 controller.name = cities[indexPath.row].city
+                
             }
         }
     }
     @objc func buttonAction(sender: UIButton!) {
-        performSegue(withIdentifier: "citylocation", sender: sender)
+        performSegue(withIdentifier: "citylocation", sender: self)
     }
 
     override func viewDidLoad() {

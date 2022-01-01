@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8lK-5d-gVo">
-                                <rect key="frame" x="4" y="4" width="405" height="800"/>
+                                <rect key="frame" x="4" y="48" width="405" height="810"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -64,11 +64,12 @@
                     <navigationItem key="navigationItem" id="Ufj-t6-4Up"/>
                     <connections>
                         <outlet property="citytable" destination="oYN-8N-ubY" id="8IJ-Fe-hik"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="reloadcitydata" id="LLc-h1-fNd"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="citylocation" id="poM-q4-cGI"/>
+                        <segue destination="b14-tB-TyP" kind="unwind" identifier="reload" unwindAction="unwindToViewControllerAWithSegue:" id="62M-q7-rOI"/>
+                        <segue destination="b14-tB-TyP" kind="unwind" identifier="citylocation" unwindAction="unwindToLocalWithSegue:" id="21S-6t-3bG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hif-WL-9qS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="b14-tB-TyP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1759" y="67"/>
         </scene>
@@ -91,9 +92,6 @@
             <point key="canvasLocation" x="871" y="67"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="poM-q4-cGI"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

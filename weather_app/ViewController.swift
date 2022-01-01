@@ -23,10 +23,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var models = [DailyWeather]()
     var hourlymodels = [HourlyWeather]()
     var current: CurrentWeather?
+    static let controller = ViewController()
     var temp = ""
-    var llon = ""
+    var llon = "" 
     var llat = ""
     var name = ""
+    var m = 0
     let convert = 273.15
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -50,7 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HourlyTableViewCell", for: indexPath) as! HourlyTableViewCell
             cell.configure(with: hourlymodels)
-            
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as! WeatherTableViewCell
@@ -118,7 +119,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
             })
-            
         }else {
             let url = "https://api.openweathermap.org/data/2.5/onecall?lat=\(llat)&lon=\(llon)&exclude=minutely&appid=fba02848d8920784eff0be44d201ecff"
             var json: WeatherResponse?
@@ -186,6 +186,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func buttonAction(sender: UIButton!) {
         performSegue(withIdentifier: "city", sender: sender)
+    }
+    @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.requestWeatherForLocation()
+            }
+        }
+    }
+    @IBAction func unwindToLocal(segue: UIStoryboardSegue) {
+        llon = ""
+        llat = ""
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.requestWeatherForLocation()
+            }
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
